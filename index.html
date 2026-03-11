@@ -1,1 +1,153 @@
-hi 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Think Before You Click</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 120px 20px;
+    background: linear-gradient(135deg,#1e293b,#020617);
+}
+
+header h1 {
+    font-size: 3rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+}
+
+section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.highlight {
+    color: #38bdf8;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Think Before You Click</h1>
+<p>Random links and QR codes can lead to scams, malware, and stolen data.</p>
+</header>
+
+<section>
+<h2>Why random links are dangerous</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Phishing</h3>
+<p>Fake websites trick you into entering passwords, emails, or payment details.</p>
+</div>
+
+<div class="card">
+<h3>Malware</h3>
+<p>Some links automatically download harmful software to your device.</p>
+</div>
+
+<div class="card">
+<h3>Fake Logins</h3>
+<p>Attackers copy real websites to steal your accounts.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>QR Codes are not always safe</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Hidden destination</h3>
+<p>You cannot see the link behind a QR code before scanning it.</p>
+</div>
+
+<div class="card">
+<h3>Sticker attacks</h3>
+<p>Attackers place malicious QR stickers over real ones.</p>
+</div>
+
+<div class="card">
+<h3>Fake payments</h3>
+<p>QR codes can redirect payments to criminals.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>How to stay safe</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Check the URL</h3>
+<p>Always verify the website address before entering information.</p>
+</div>
+
+<div class="card">
+<h3>Do not trust random QR codes</h3>
+<p>Especially in public places like posters or parking meters.</p>
+</div>
+
+<div class="card">
+<h3>Use security tools</h3>
+<p>Modern browsers and antivirus tools help detect malicious websites.</p>
+</div>
+
+</div>
+</section>
+
+<footer>
+<p>Cybersecurity awareness project</p>
+</footer>
+
+</body>
+</html>
