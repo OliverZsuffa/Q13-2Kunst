@@ -1,153 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Think Before You Click</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #0f172a;
-    color: white;
+
+body{
+margin:0;
+font-family:Inter, sans-serif;
+background:#0f172a;
+color:white;
+line-height:1.6;
 }
 
-header {
-    text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(135deg,#1e293b,#020617);
+header{
+text-align:center;
+padding:120px 20px;
+background:linear-gradient(135deg,#1e293b,#020617);
 }
 
-header h1 {
-    font-size: 3rem;
+header h1{
+font-size:3rem;
+margin-bottom:10px;
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #94a3b8;
+header p{
+color:#94a3b8;
+font-size:1.2rem;
 }
 
-section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 80px 20px;
+section{
+max-width:1100px;
+margin:auto;
+padding:90px 20px;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 30px;
+h2{
+margin-bottom:30px;
+font-size:2rem;
 }
 
-.card {
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    transition: transform 0.2s;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:14px;
+transition:transform 0.2s;
 }
 
-.card h3 {
-    margin-top: 0;
+.card:hover{
+transform:translateY(-6px);
 }
 
-.highlight {
-    color: #38bdf8;
+.card h3{
+margin-top:0;
 }
 
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #94a3b8;
+.imageSection{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
 }
+
+.imageSection img{
+width:100%;
+border-radius:14px;
+}
+
+.warning{
+background:#111827;
+padding:60px;
+border-radius:16px;
+}
+
+footer{
+text-align:center;
+padding:60px;
+color:#94a3b8;
+}
+
+/* hack screen */
+
+#hackScreen{
+position:fixed;
+inset:0;
+background:black;
+color:#00ff9c;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:monospace;
+text-align:center;
+opacity:0;
+pointer-events:none;
+transition:opacity 1s;
+z-index:1000;
+}
+
+#hackScreen.active{
+opacity:1;
+}
+
+.hackContent h1{
+font-size:3rem;
+color:red;
+margin-bottom:20px;
+}
+
+#revealMessage{
+position:fixed;
+inset:0;
+background:#020617;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+opacity:0;
+pointer-events:none;
+transition:opacity 1s;
+z-index:1001;
+}
+
+#revealMessage.active{
+opacity:1;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h1>Think Before You Click</h1>
-<p>Random links and QR codes can lead to scams, malware, and stolen data.</p>
+
+<p>Random links and QR codes can lead to scams, malware, and stolen data</p>
+
 </header>
 
 <section>
-<h2>Why random links are dangerous</h2>
+
+<h2>Why Random Links Are Dangerous</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>Phishing</h3>
-<p>Fake websites trick you into entering passwords, emails, or payment details.</p>
+<p>Attackers create fake websites that look identical to real services and trick users into entering passwords or payment information.</p>
 </div>
 
 <div class="card">
 <h3>Malware</h3>
-<p>Some links automatically download harmful software to your device.</p>
+<p>Some links download malicious software onto your device which can steal files, record keystrokes, or spy on activity.</p>
 </div>
 
 <div class="card">
-<h3>Fake Logins</h3>
-<p>Attackers copy real websites to steal your accounts.</p>
+<h3>Account Takeover</h3>
+<p>Fake login pages collect usernames and passwords that criminals later use to access real accounts.</p>
 </div>
 
 </div>
+
+</section>
+
+<section class="imageSection">
+
+<div>
+
+<h2>QR Codes Hide the Destination</h2>
+
+<p>A QR code hides the website address behind a simple square pattern. You cannot see the destination before scanning it. Criminals exploit this limitation to redirect people to malicious websites.</p>
+
+<p>This attack technique is becoming more common in parking meters, restaurant menus, posters, and emails.</p>
+
+</div>
+
+<img src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf">
+
+</section>
+
+<section class="imageSection">
+
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+
+<div>
+
+<h2>How Attackers Trick People</h2>
+
+<p>Cyber criminals often rely on urgency and curiosity. They create messages that make people react quickly without verifying the source.</p>
+
+<p>Examples include fake package tracking links, fake login alerts, or QR codes promising rewards.</p>
+
+</div>
+
 </section>
 
 <section>
-<h2>QR Codes are not always safe</h2>
+
+<h2>Common QR Code Scams</h2>
 
 <div class="cards">
 
 <div class="card">
-<h3>Hidden destination</h3>
-<p>You cannot see the link behind a QR code before scanning it.</p>
+<h3>Parking meter scams</h3>
+<p>Fake QR stickers redirect drivers to payment pages that steal credit card details.</p>
 </div>
 
 <div class="card">
-<h3>Sticker attacks</h3>
-<p>Attackers place malicious QR stickers over real ones.</p>
+<h3>Fake restaurant menus</h3>
+<p>Malicious codes placed over real ones lead to phishing pages.</p>
 </div>
 
 <div class="card">
-<h3>Fake payments</h3>
-<p>QR codes can redirect payments to criminals.</p>
+<h3>Public posters</h3>
+<p>Attackers replace legitimate QR codes with ones that download malware.</p>
 </div>
 
 </div>
+
 </section>
 
-<section>
-<h2>How to stay safe</h2>
+<section class="warning">
+
+<h2>How to Protect Yourself</h2>
 
 <div class="cards">
+
+<div class="card">
+<h3>Verify the source</h3>
+<p>Only open links from trusted senders and official websites.</p>
+</div>
 
 <div class="card">
 <h3>Check the URL</h3>
-<p>Always verify the website address before entering information.</p>
+<p>Look carefully at the domain name before entering any credentials.</p>
 </div>
 
 <div class="card">
-<h3>Do not trust random QR codes</h3>
-<p>Especially in public places like posters or parking meters.</p>
-</div>
-
-<div class="card">
-<h3>Use security tools</h3>
-<p>Modern browsers and antivirus tools help detect malicious websites.</p>
+<h3>Avoid random QR codes</h3>
+<p>Be cautious with codes placed in public areas or unexpected messages.</p>
 </div>
 
 </div>
+
 </section>
 
 <footer>
-<p>Cybersecurity awareness project</p>
+
+<p>Scroll to the bottom to finish this awareness demonstration</p>
+
 </footer>
 
+
+<div id="hackScreen">
+
+<div class="hackContent">
+
+<h1>ACCESS BREACH DETECTED</h1>
+
+<p>Unauthorized activity detected</p>
+
+<p>Scanning system files...</p>
+
+</div>
+
+</div>
+
+
+<div id="revealMessage">
+
+<h2>This was a demonstration</h2>
+
+<p>If this had been a real malicious website your data could already be stolen.</p>
+
+<p>Never trust random links or QR codes.</p>
+
+<p>Always verify the destination before interacting with unfamiliar content.</p>
+
+</div>
+
+
+<script>
+
+let triggered=false;
+
+window.addEventListener("scroll",function(){
+
+let scrollPosition=window.innerHeight+window.scrollY;
+let pageHeight=document.body.offsetHeight;
+
+if(!triggered && scrollPosition>=pageHeight-40){
+
+triggered=true;
+
+let hackScreen=document.getElementById("hackScreen");
+let reveal=document.getElementById("revealMessage");
+
+hackScreen.classList.add("active");
+
+setTimeout(function(){
+
+hackScreen.classList.remove("active");
+reveal.classList.add("active");
+
+},4000);
+
+}
+
+});
+
+</script>
+
 </body>
+
 </html>
