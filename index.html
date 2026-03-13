@@ -51,37 +51,45 @@ h2{font-size:2.2rem;margin-bottom:25px;}
 footer{text-align:center;padding:60px;color:#94a3b8;}
 
 /* hack screen */
-#hackScreen{position:fixed;inset:0;background:black;color:#00ff9c;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Press Start 2P',monospace;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s;z-index:1000;padding:20px;box-sizing:border-box;overflow:auto;}
+#hackScreen{
+  position:fixed;
+  inset:0;
+  background:black;
+  color:#00ff9c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  font-family:'Press Start 2P',monospace;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s;
+  z-index:1000;
+  padding:20px;
+  box-sizing:border-box;
+  overflow:auto;
+}
 #hackScreen.active{opacity:1;}
-
-/* Hack screen responsive text */
-.hackContent h1 {
+.hackContent h1{
   color:red;
-  font-size:clamp(1.2rem, 7vw, 3rem);
+  font-size:clamp(1.5rem,8vw,3rem);
   line-height:1.2;
   text-align:center;
-  word-break: break-word;  /* breaks long words if needed */
-  white-space: normal;     /* allows wrapping */
+  word-break:break-word;
+  white-space:normal;
   margin-bottom:20px;
-  width:100%;              /* ensures it fits inside the screen */
-  box-sizing:border-box;
-}
-.typewriter {
-  font-size:clamp(0.9rem, 4vw, 1.5rem);
-  white-space:pre-wrap;    /* allow wrapping for typewriter text */
-  overflow-wrap:break-word;
-  border-right:0.15em solid #00ff9c;
-  animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;
   width:100%;
   box-sizing:border-box;
 }
-
-@keyframes typing{from{width:0} to{width:100%}}
-@keyframes blink{50%{border-color:transparent}}
-
-/* reveal */
-#revealMessage{position:fixed;inset:0;background:#020617;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;opacity:0;pointer-events:none;transition:opacity 1s;z-index:1001;}
-#revealMessage.active{opacity:1;}
+.typewriter{
+  font-size:clamp(1rem,4vw,1.5rem);
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+  border-right:0.15em solid #00ff9c;
+  width:100%;
+  box-sizing:border-box;
+}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -212,43 +220,47 @@ header p{font-size:0.95rem;}
 </footer>
 
 <div id="hackScreen">
-<div class="hackContent">
-<h1>ACCESS BREACH DETECTED</h1>
-<p class="typewriter">Initializing system scan...</p>
-<p class="typewriter">unsecured credentials detected...</p>
-<p>Data has been compromized</p>
-<p>Thank you :)</p>
-</div>
+  <div class="hackContent">
+    <h1>ACCESS BREACH DETECTED</h1>
+    <p class="typewriter" id="typewriter">Initializing system scan... unsecured credentials detected...</p>
+  </div>
 </div>
 
 <script>
 // progress bar
-window.onscroll=function(){
-let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-let scrolled=(winScroll/height)*100;
-document.getElementById("progressBar").style.width=scrolled+"%";
+window.onscroll = function(){
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (winScroll/height)*100;
+  document.getElementById("progressBar").style.width = scrolled+"%";
 }
 
-// hack trigger
-<script>
+// Hack screen trigger
 let triggered = false;
 window.addEventListener("scroll", function() {
   let scrollPosition = window.innerHeight + window.scrollY;
   let pageHeight = document.body.offsetHeight;
-  if (!triggered && scrollPosition >= pageHeight - 60) {
+  if(!triggered && scrollPosition >= pageHeight - 60){
     triggered = true;
     let hackScreen = document.getElementById("hackScreen");
     hackScreen.classList.add("active");
+
+    // JS typewriter effect
+    const typeEl = document.getElementById("typewriter");
+    const text = typeEl.textContent;
+    typeEl.textContent = '';
+    let i = 0;
+    function type() {
+      if(i < text.length){
+        typeEl.textContent += text[i];
+        i++;
+        setTimeout(type, 40);
+      }
+    }
+    type();
   }
 });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
