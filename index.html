@@ -53,8 +53,24 @@ footer{text-align:center;padding:60px;color:#94a3b8;}
 /* hack screen */
 #hackScreen{position:fixed;inset:0;background:black;color:#00ff9c;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Press Start 2P',monospace;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s;z-index:1000;padding:20px;box-sizing:border-box;overflow:auto;}
 #hackScreen.active{opacity:1;}
-.hackContent h1{color:red;font-size:2.2rem;margin-bottom:20px;}
-.typewriter{white-space:pre;overflow:hidden;border-right:0.15em solid #00ff9c;width:0;animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;}
+
+/* Hack screen responsive text */
+.hackContent h1{
+color:red;
+font-size:clamp(1.8rem, 8vw, 3rem); /* scales on any device */
+margin-bottom:20px;
+word-wrap:break-word;
+text-align:center;
+}
+.typewriter{
+font-size:clamp(1rem,4vw,1.5rem);
+white-space:pre;
+overflow:hidden;
+border-right:0.15em solid #00ff9c;
+width:0;
+animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;
+}
+
 @keyframes typing{from{width:0} to{width:100%}}
 @keyframes blink{50%{border-color:transparent}}
 
