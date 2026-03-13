@@ -231,18 +231,22 @@ document.getElementById("progressBar").style.width=scrolled+"%";
 }
 
 // hack trigger
-let triggered=false;
-window.addEventListener("scroll",function(){
-let scrollPosition=window.innerHeight+window.scrollY;
-let pageHeight=document.body.offsetHeight;
-if(!triggered && scrollPosition>=pageHeight-60){
-triggered=true;
-let hackScreen=document.getElementById("hackScreen");
-hackScreen.classList.add("active");
+<script>
+let triggered = false;
+window.addEventListener("scroll", function() {
+  let scrollPosition = window.innerHeight + window.scrollY;
+  let pageHeight = document.body.offsetHeight;
+  if (!triggered && scrollPosition >= pageHeight - 60) {
+    triggered = true;
+    let hackScreen = document.getElementById("hackScreen");
+    hackScreen.classList.add("active");
+  }
+});
 </script>
 
 </body>
 </html>
+
 
 
 
