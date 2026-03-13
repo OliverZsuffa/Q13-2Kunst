@@ -55,20 +55,25 @@ footer{text-align:center;padding:60px;color:#94a3b8;}
 #hackScreen.active{opacity:1;}
 
 /* Hack screen responsive text */
-.hackContent h1{
-color:red;
-font-size:clamp(1.8rem, 8vw, 3rem); /* scales on any device */
-margin-bottom:20px;
-word-wrap:break-word;
-text-align:center;
+.hackContent h1 {
+  color:red;
+  font-size:clamp(1.2rem, 7vw, 3rem);
+  line-height:1.2;
+  text-align:center;
+  word-break: break-word;  /* breaks long words if needed */
+  white-space: normal;     /* allows wrapping */
+  margin-bottom:20px;
+  width:100%;              /* ensures it fits inside the screen */
+  box-sizing:border-box;
 }
-.typewriter{
-font-size:clamp(1rem,4vw,1.5rem);
-white-space:pre;
-overflow:hidden;
-border-right:0.15em solid #00ff9c;
-width:0;
-animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;
+.typewriter {
+  font-size:clamp(0.9rem, 4vw, 1.5rem);
+  white-space:pre-wrap;    /* allow wrapping for typewriter text */
+  overflow-wrap:break-word;
+  border-right:0.15em solid #00ff9c;
+  animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;
+  width:100%;
+  box-sizing:border-box;
 }
 
 @keyframes typing{from{width:0} to{width:100%}}
@@ -249,3 +254,4 @@ reveal.classList.add("active");
 
 </body>
 </html>
+
