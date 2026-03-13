@@ -4,552 +4,231 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Think Before You Click</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
-
 <style>
-
 /* Base */
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-margin:0;
-font-family:Inter,sans-serif;
-background:#0f172a;
-color:white;
-line-height:1.7;
-}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:Inter,sans-serif;background:#0f172a;color:white;line-height:1.7;overflow-x:hidden;}
 
 /* progress bar */
-
-#progressBar{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#38bdf8;
-width:0%;
-z-index:2000;
-}
+#progressBar{position:fixed;top:0;left:0;height:4px;background:#38bdf8;width:0%;z-index:2000;}
 
 /* header */
-
-header{
-text-align:center;
-padding:140px 20px;
-background:linear-gradient(135deg,#1e293b,#020617);
-}
-
-header h1{
-font-size:3.5rem;
-margin-bottom:10px;
-}
-
-header p{
-color:#94a3b8;
-font-size:1.3rem;
-}
+header{text-align:center;padding:140px 20px;background:linear-gradient(135deg,#1e293b,#020617);}
+header h1{font-size:3.5rem;margin-bottom:10px;}
+header p{color:#94a3b8;font-size:1.3rem;}
 
 /* layout */
-
-section{
-max-width:900px;
-margin:auto;
-padding:100px 20px;
-}
-
-h2{
-font-size:2.2rem;
-margin-bottom:25px;
-}
+section{max-width:900px;margin:auto;padding:100px 20px;}
+h2{font-size:2.2rem;margin-bottom:25px;}
 
 /* cards */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.card{
-background:#1e293b;
-padding:30px;
-border-radius:14px;
-transition:transform 0.2s,box-shadow 0.2s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-.card h3{
-margin-top:0;
-}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.card{background:#1e293b;padding:30px;border-radius:14px;transition:transform 0.2s,box-shadow 0.2s;}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+.card h3{margin-top:0;}
 
 /* image sections */
-
-.imageSection{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-align-items:center;
-margin-bottom:40px;
-}
-
-.imageSection img{
-width:100%;
-height:auto;
-border-radius:14px;
-object-fit:cover;
-}
+.imageSection{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:40px;}
+.imageSection img{width:100%;height:auto;border-radius:14px;object-fit:cover;}
 
 /* warning block */
-
-.warning{
-background:#111827;
-padding:60px;
-border-radius:16px;
-}
+.warning{background:#111827;padding:60px;border-radius:16px;}
 
 /* fake QR */
-
-.fakeQR{
-display:inline-block;
-background:#111827;
-padding:30px;
-border-radius:16px;
-text-align:center;
-cursor:pointer;
-transition:transform 0.2s;
-}
-
-.fakeQR:hover{
-transform:scale(1.05);
-}
-
-.fakeQR img{
-width:70%;
-max-width:220px;
-}
-
-.fakeQR p{
-margin-top:10px;
-color:#38bdf8;
-font-weight:600;
-}
+.fakeQR{display:inline-block;background:#111827;padding:30px;border-radius:16px;text-align:center;cursor:pointer;transition:transform 0.2s;margin:auto;}
+.fakeQR:hover{transform:scale(1.05);}
+.fakeQR img{width:70%;max-width:220px;}
+.fakeQR p{margin-top:10px;color:#38bdf8;font-weight:600;}
 
 /* quiz */
-
-.quiz{
-background:#1e293b;
-padding:30px;
-border-radius:16px;
-}
-
-.quiz button{
-margin-top:10px;
-padding:12px 18px;
-border:none;
-border-radius:8px;
-background:#38bdf8;
-color:white;
-font-size:1rem;
-cursor:pointer;
-}
-
-.quiz button:hover{
-background:#0ea5e9;
-}
+.quiz{background:#1e293b;padding:30px;border-radius:16px;margin-bottom:40px;}
+.quiz button{margin-top:10px;padding:12px 18px;border:none;border-radius:8px;background:#38bdf8;color:white;font-size:1rem;cursor:pointer;}
+.quiz button:hover{background:#0ea5e9;}
+.quiz .question{margin-bottom:25px;}
 
 /* footer */
-
-footer{
-text-align:center;
-padding:60px;
-color:#94a3b8;
-}
+footer{text-align:center;padding:60px;color:#94a3b8;}
 
 /* hack screen */
-
-#hackScreen{
-position:fixed;
-inset:0;
-background:black;
-color:#00ff9c;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-font-family:'Press Start 2P',monospace;
-text-align:center;
-opacity:0;
-pointer-events:none;
-transition:opacity 1s;
-z-index:1000;
-}
-
-#hackScreen.active{
-opacity:1;
-}
-
-.hackContent h1{
-color:red;
-font-size:2.2rem;
-margin-bottom:20px;
-}
-
-.typewriter{
-white-space:pre;
-overflow:hidden;
-border-right:0.15em solid #00ff9c;
-width:0;
-animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;
-}
-
-@keyframes typing{
-from{width:0}
-to{width:100%}
-}
-
-@keyframes blink{
-50%{border-color:transparent}
-}
+#hackScreen{position:fixed;inset:0;background:black;color:#00ff9c;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Press Start 2P',monospace;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s;z-index:1000;padding:20px;box-sizing:border-box;overflow:auto;}
+#hackScreen.active{opacity:1;}
+.hackContent h1{color:red;font-size:2.2rem;margin-bottom:20px;}
+.typewriter{white-space:pre;overflow:hidden;border-right:0.15em solid #00ff9c;width:0;animation:typing 6s steps(80,end) forwards,blink 0.75s step-end infinite;}
+@keyframes typing{from{width:0} to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
 
 /* reveal */
-
-#revealMessage{
-position:fixed;
-inset:0;
-background:#020617;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px;
-opacity:0;
-pointer-events:none;
-transition:opacity 1s;
-z-index:1001;
-}
-
-#revealMessage.active{
-opacity:1;
-}
+#revealMessage{position:fixed;inset:0;background:#020617;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;opacity:0;pointer-events:none;transition:opacity 1s;z-index:1001;}
+#revealMessage.active{opacity:1;}
 
 /* MOBILE */
-
 @media(max-width:900px){
-
-header{
-padding:80px 20px;
+header{padding:80px 20px;}
+header h1{font-size:2.3rem;}
+header p{font-size:1rem;}
+section{padding:60px 20px;}
+.imageSection{grid-template-columns:1fr;}
+.cards{grid-template-columns:1fr;}
+.card{padding:25px;}
+.fakeQR{width:100%;max-width:260px;margin:auto;}
 }
-
-header h1{
-font-size:2.3rem;
-}
-
-header p{
-font-size:1rem;
-}
-
-section{
-padding:60px 20px;
-}
-
-.imageSection{
-grid-template-columns:1fr;
-}
-
-.cards{
-grid-template-columns:1fr;
-}
-
-.card{
-padding:25px;
-}
-
-.fakeQR{
-width:100%;
-max-width:260px;
-margin:auto;
-}
-
-}
-
 @media(max-width:500px){
-
-body{
-font-size:16px;
+body{font-size:16px;}
+h2{font-size:1.6rem;}
+header h1{font-size:2rem;}
+header p{font-size:0.95rem;}
+.card{padding:22px;}
+.fakeQR img{width:180px;}
 }
-
-h2{
-font-size:1.6rem;
-}
-
-header h1{
-font-size:2rem;
-}
-
-header p{
-font-size:0.95rem;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
 <div id="progressBar"></div>
 
 <header>
-
 <h1>Think Before You Click</h1>
-
 <p>Random links and QR codes can lead to scams, malware, and stolen data. Awareness is your first defense.</p>
-
 </header>
 
 <section>
-
 <h2>Why Random Links Are Dangerous</h2>
-
 <div class="cards">
-
-<div class="card">
-<h3>Phishing</h3>
-<p>Attackers often create fake websites designed to look identical to real services. These sites trick users into entering passwords, emails, or credit card information. Once submitted, the attackers can use this data immediately to access accounts or steal money.</p>
-<p>Phishing attacks usually include urgent messages such as warnings about account problems or limited time offers. The goal is to make victims act quickly without thinking.</p>
+<div class="card"><h3>Phishing</h3>
+<p>Attackers often create fake websites designed to look identical to real services. These sites trick users into entering passwords, emails, or credit card information. Once submitted, the attackers can use this data immediately to access accounts or steal money. Phishing attacks usually include urgent messages such as warnings about account problems or limited time offers. The goal is to make victims act quickly without thinking. Understanding phishing techniques helps users identify and avoid such traps.</p></div>
+<div class="card"><h3>Malware</h3>
+<p>Some links automatically download malware onto your device. Malware can steal personal files, monitor activity, or secretly record keystrokes. In severe cases, it can give attackers remote control over the device. Modern malware can bypass some security software, making caution vital. Avoid clicking on unfamiliar links or downloading attachments from unknown sources. Awareness is the first line of defense against infection.</p></div>
+<div class="card"><h3>Account Takeover</h3>
+<p>Fake login pages collect usernames and passwords. Once attackers have these credentials, they can take control of the real account. Attackers often post messages from compromised accounts, spreading phishing further. Using unique passwords and multi-factor authentication greatly reduces this risk. Educating yourself and others about these attacks prevents widespread damage.</p></div>
 </div>
-
-<div class="card">
-<h3>Malware</h3>
-<p>Some links automatically download malware onto your device. Malware can steal personal files, monitor activity, or secretly record keystrokes. In severe cases it can give attackers remote control over the device.</p>
-<p>Modern malware often spreads silently and may remain undetected for weeks. Avoid opening links from unknown sources.</p>
-</div>
-
-<div class="card">
-<h3>Account Takeover</h3>
-<p>Fake login pages collect usernames and passwords. Once attackers have these credentials they can log into the real service and take control of accounts.</p>
-<p>Many people reuse passwords across multiple services which makes the damage much worse.</p>
-</div>
-
-</div>
-
 </section>
 
 <section class="imageSection">
-
 <div>
-
 <h2>QR Codes Hide The Destination</h2>
-
-<p>A QR code encodes a link inside a pattern that cannot be read by humans. This means you cannot see the website address before scanning the code.</p>
-
-<p>Attackers exploit this limitation by placing malicious QR codes in public places. These codes may appear on posters, restaurant menus, parking meters, or advertisements.</p>
-
-<p>Once scanned, the code may redirect users to phishing pages or malware downloads.</p>
-
+<p>A QR code encodes a URL in a pattern that cannot be read by humans. Attackers exploit this to redirect users to malicious pages. These codes may appear on posters, restaurant menus, parking meters, or advertisements. Scanning without verifying the source can lead to malware or phishing attacks. Users should always inspect links after scanning and avoid codes from unknown sources.</p>
 </div>
-
 <img src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf">
-
 </section>
 
 <section class="imageSection">
-
 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
-
 <div>
-
 <h2>How Attackers Trick People</h2>
-
-<p>Cyber criminals often rely on psychological tricks rather than technical exploits. They create messages that trigger curiosity, fear, or urgency.</p>
-
-<p>Examples include fake delivery notifications, login warnings, or prize giveaways. The message pushes victims to click quickly before they verify the source.</p>
-
-<p>Understanding these tactics helps people slow down and evaluate links before interacting with them.</p>
-
+<p>Cyber criminals rely on psychological tactics rather than technical exploits. They exploit curiosity, fear, and urgency to prompt quick clicks. Examples include fake delivery notifications, login alerts, or reward messages. The goal is to reduce the victim’s time to analyze content. Awareness slows down decision-making, reducing exposure to traps.</p>
+<p>Always pause before clicking links or scanning codes. Verify with official sources whenever possible.</p>
 </div>
-
 </section>
 
 <section>
-
 <h2>Real World Examples</h2>
-
 <div class="cards">
-
-<div class="card">
-<h3>Package Delivery Scams</h3>
-<p>Messages pretending to be from shipping companies often ask users to click a tracking link. The link leads to a fake website requesting login details or payment information.</p>
+<div class="card"><h3>Package Delivery Scams</h3>
+<p>Fake delivery emails trick users into clicking a link that leads to a phishing page requesting login or payment details. Users often think the message is legitimate because it mimics the company’s branding. Careful inspection and verification are essential.</p></div>
+<div class="card"><h3>Bank Phishing</h3>
+<p>Attackers send urgent emails claiming suspicious activity. Victims are prompted to click immediately. The fake page collects login information. Banks never ask for passwords via email, so skepticism is essential.</p></div>
+<div class="card"><h3>Social Media Hacks</h3>
+<p>Links promising free followers or gifts steal credentials. Once accounts are taken over, attackers can spam friends or sell the accounts. Users must verify links carefully before interacting.</p></div>
+<div class="card"><h3>Mobile App Fraud</h3>
+<p>Some links trick users into installing malicious apps. These apps can steal data, track location, or access the camera/mic. Only download apps from official stores.</p></div>
 </div>
-
-<div class="card">
-<h3>Bank Phishing</h3>
-<p>Emails or SMS messages claim there is suspicious activity on a bank account. Victims are asked to log in immediately through a link which leads to a fake banking site.</p>
-</div>
-
-<div class="card">
-<h3>Social Media Hacks</h3>
-<p>Links promising free followers, rewards, or account verification steal login credentials and allow attackers to control the account.</p>
-</div>
-
-<div class="card">
-<h3>Mobile App Fraud</h3>
-<p>Some links encourage users to install malicious apps outside official app stores.</p>
-</div>
-
-</div>
-
 </section>
 
 <section class="warning">
-
 <h2>Tips To Stay Safe</h2>
-
 <div class="cards">
-
-<div class="card">
-<h3>Verify The Source</h3>
-<p>Always check who sent the link. Unexpected links from unknown senders should be treated with caution.</p>
+<div class="card"><h3>Verify The Source</h3>
+<p>Check who sent the link. Contact the sender if unsure. Unexpected links from unknown senders are high risk.</p></div>
+<div class="card"><h3>Check The URL</h3>
+<p>Look carefully at the domain. Attackers often modify letters to trick users. Secure sites use HTTPS but always inspect the domain fully.</p></div>
+<div class="card"><h3>Avoid Random QR Codes</h3>
+<p>Scan only codes from trusted locations. Always verify the resulting link before interacting.</p></div>
+<div class="card"><h3>Enable MFA</h3>
+<p>Multi-factor authentication adds a layer of security even if credentials are stolen. Always enable where possible.</p></div>
+<div class="card"><h3>Educate Others</h3>
+<p>Share awareness with family and friends. Many victims are less tech-savvy and unaware of these risks.</p></div>
 </div>
-
-<div class="card">
-<h3>Check The URL</h3>
-<p>Look carefully at the domain name. Attackers often use slightly modified addresses to trick users.</p>
-</div>
-
-<div class="card">
-<h3>Avoid Random QR Codes</h3>
-<p>Only scan QR codes from trusted locations and official organizations.</p>
-</div>
-
-<div class="card">
-<h3>Enable Multi Factor Authentication</h3>
-<p>MFA adds an extra layer of security even if passwords are compromised.</p>
-</div>
-
-</div>
-
 </section>
 
 <section>
-
 <h2>Interactive QR Code Demo</h2>
-
 <p>Tap the QR code below. This is a safe simulation showing how attackers can trick people.</p>
-
-<div class="fakeQR" onclick="alert('This is a demonstration. A malicious QR code could redirect to a phishing website.')">
-
+<div class="fakeQR" onclick="alert('Demo: A malicious QR code could redirect to a phishing website. Always verify links!')">
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/QR_code_for_mobile_English_Wikipedia.svg">
-
 <p>Example QR Code</p>
-
 </div>
-
 </section>
 
 <section>
-
-<h2>Quick Awareness Quiz</h2>
-
+<h2>Cybersecurity Quiz</h2>
 <div class="quiz">
-
-<p>If you receive a message with a random link asking you to log in immediately, what should you do?</p>
-
-<button onclick="alert('Correct. Always verify the source and check the URL before clicking.')">Verify the source first</button>
-
-<button onclick="alert('Incorrect. Clicking immediately could expose you to phishing.')">Click immediately</button>
-
+<div class="question">
+<p>1. You receive a message claiming you won a gift but must click a link. What do you do?</p>
+<button onclick="alert('Correct: Avoid clicking and verify source.')">Do not click, verify source</button>
+<button onclick="alert('Incorrect: Clicking may expose you to phishing.')">Click the link immediately</button>
 </div>
-
+<div class="question">
+<p>2. A friend sends a link but the URL looks slightly off. You should:</p>
+<button onclick="alert('Correct: Verify before clicking.')">Ask them and verify</button>
+<button onclick="alert('Incorrect: Clicking could compromise your account.')">Click without checking</button>
+</div>
+<div class="question">
+<p>3. A QR code is on a parking meter you’ve never used. You should:</p>
+<button onclick="alert('Correct: Avoid scanning unknown QR codes.')">Avoid scanning</button>
+<button onclick="alert('Incorrect: Scanning may steal payment info.')">Scan immediately</button>
+</div>
+<div class="question">
+<p>4. An app promises free followers if you login with social media credentials. You should:</p>
+<button onclick="alert('Correct: Never provide credentials to unverified apps.')">Never provide credentials</button>
+<button onclick="alert('Incorrect: This may compromise your account.')">Login to try it</button>
+</div>
+</div>
 </section>
 
 <footer>
-
-<p>Scroll to the bottom for the final demonstration</p>
-
+<p>Scroll to the bottom for the final demonstration.</p>
 </footer>
 
 <div id="hackScreen">
-
 <div class="hackContent">
-
 <h1>ACCESS BREACH DETECTED</h1>
-
 <p class="typewriter">Initializing system scan... unauthorized activity detected...</p>
-
 <p>This is a simulation</p>
-
 </div>
-
 </div>
 
 <div id="revealMessage">
-
 <h2>This Was A Demonstration</h2>
-
-<p>If this were a real malicious website your data could already be compromised.</p>
-
-<p>Never trust random links or QR codes. Always verify where a link leads before interacting with it.</p>
-
+<p>If this were a real malicious website, your data could already be compromised.</p>
+<p>Never trust random links or QR codes. Always verify the destination before interacting.</p>
 </div>
 
 <script>
-
-/* progress bar */
-
+// progress bar
 window.onscroll=function(){
-
 let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
-
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-
 let scrolled=(winScroll/height)*100;
-
 document.getElementById("progressBar").style.width=scrolled+"%";
-
 }
 
-/* hack trigger */
-
+// hack trigger
 let triggered=false;
-
 window.addEventListener("scroll",function(){
-
 let scrollPosition=window.innerHeight+window.scrollY;
-
 let pageHeight=document.body.offsetHeight;
-
 if(!triggered && scrollPosition>=pageHeight-60){
-
 triggered=true;
-
 let hackScreen=document.getElementById("hackScreen");
-
 let reveal=document.getElementById("revealMessage");
-
 hackScreen.classList.add("active");
-
 setTimeout(function(){
-
 hackScreen.classList.remove("active");
-
 reveal.classList.add("active");
-
 },6000);
-
 }
-
 });
-
 </script>
 
 </body>
