@@ -221,12 +221,6 @@ header p{font-size:0.95rem;}
 </div>
 </div>
 
-<div id="revealMessage">
-<h2>This Was A Demonstration</h2>
-<p>If this were a real malicious website, your data could already be compromised.</p>
-<p>Never trust random links or QR codes. Always verify the destination before interacting.</p>
-</div>
-
 <script>
 // progress bar
 window.onscroll=function(){
@@ -244,18 +238,12 @@ let pageHeight=document.body.offsetHeight;
 if(!triggered && scrollPosition>=pageHeight-60){
 triggered=true;
 let hackScreen=document.getElementById("hackScreen");
-let reveal=document.getElementById("revealMessage");
 hackScreen.classList.add("active");
-setTimeout(function(){
-hackScreen.classList.remove("active");
-reveal.classList.add("active");
-},6000);
-}
-});
 </script>
 
 </body>
 </html>
+
 
 
 
